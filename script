@@ -1,0 +1,96 @@
+--[ This is a protected script
+	You cannot steal it/Please dont
+    so yeah ig thanks for using my script
+	IT IS NOT DONE❗❗❗❗
+--]
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "🤑Please Donate🤑", HidePremium = false, IntroEnabled = false, IntroText = "Loading...", SaveConfig = true, ConfigFolder = "PlsDonate🤑"})
+
+OrionLib:MakeNotification({
+	Name = "Logged in!",
+	Content = "You are logged in as"..Player.Name..".",
+	Image = "nil",
+	Time = 5
+})
+
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+    print("EnteredCorrectKey")
+end
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Correct Key!",
+        Content = "You have entered the correct key!",
+        Image = "nil",
+        Time = 5
+    })
+end
+
+function InCorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "InCorrect Key!",
+        Content = "You have entered the Incorrect key!",
+        Image = "nil",
+        Time = 5
+    })
+end
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "nil",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+        _G.KeyInput = Value
+	end   
+})
+
+Tab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+        _G.KeyInput == _G.Key then
+        MakeScriptHub()
+        CorrectKeyNotification()
+        else
+            InCorrectKeyNotification()
+        end	
+  	end    
+})
+
+local MainTab = Window:MakeTab({
+	Name = "🏠AutoBeg",
+	Icon = "nil",
+	PremiumOnly = false
+})
+
+MainTab:AddToggle({
+	Name = "Jump AutoBeg",
+	Default = false,
+	Callback = function(Value)
+local args = {
+    [1] = "Jumping for robux!!!",
+    [2] = "All"
+}
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+
+local args = {
+    [1] = "Please Donate Im Jumping on Dono!!",
+    [2] = "All"
+}
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+		print(Value)
+	end    
+})
+
+end
+OrionLib:Init()
